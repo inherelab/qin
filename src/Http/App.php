@@ -32,7 +32,7 @@ class App implements RequestHandlerInterface
      * @var array|\SplStack
      * ['route path' => [... middleware]]
      */
-    private $routeChain = [];
+    private $routes = [];
 
     /**
      * @var string
