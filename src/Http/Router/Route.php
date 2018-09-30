@@ -20,14 +20,19 @@ class Route
     public $pattern;
 
     /**
+     * @var string route method
+     */
+    public $method;
+
+    /**
      * @var mixed route handler
      */
     public $handler;
 
     /**
-     * @var string[] map where parameter name => regular expression pattern (or symbol name)
+     * @var array map where parameter name => regular expression pattern (or symbol name)
      */
-    public $params;
+    public $params = [];
 
     /**
      * @var array
@@ -40,29 +45,29 @@ class Route
     public $chain = [];
 
     /**
+     * @param string $method
      * @param string $pattern
      * @param $handler
-     * @param array $params
      * @param array $options
      * @return Route
      */
-    public static function create(string $pattern, $handler, array $params, array $options = []): Route
+    public static function create(string $method, string $pattern, $handler, array $options = []): Route
     {
-        return new self($pattern, $handler, $params, $options);
+        return new self($method, $pattern, $handler, $options);
     }
 
     /**
      * Route constructor.
+     * @param string $method
      * @param string $pattern
      * @param $handler
-     * @param array $params
      * @param array $options
      */
-    public function __construct(string $pattern, $handler, array $params, array $options = [])
+    public function __construct(string $method, string $pattern, $handler, array $options = [])
     {
+        $this->method = $method;
         $this->pattern = $pattern;
         $this->handler = $handler;
-        $this->params = $params;
         $this->options = $options;
     }
 
@@ -75,5 +80,16 @@ class Route
     {
         $this->params[$name] = $pattern;
         return $this;
+    }
+
+    public function getOptions(bool $containsParams = true): array
+    {
+        $options = $this->options;
+
+        if ($containsParams) {
+            $options['params'] = $this->params;
+        }
+
+        return $options;
     }
 }

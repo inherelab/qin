@@ -12,6 +12,7 @@ use Inhere\Route\ORouter;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+use Qin\AppTrait;
 use Qin\Component\ObjectPool;
 use SwoKit\Http\Server\Util\Psr7Http;
 
@@ -21,6 +22,8 @@ use SwoKit\Http\Server\Util\Psr7Http;
  */
 class App implements RequestHandlerInterface
 {
+    use AppTrait;
+
     const CTXAllowedMethodsKey = '_CTXAllowedMethods';
 
     /**
@@ -44,16 +47,23 @@ class App implements RequestHandlerInterface
      */
     protected $ctxPool;
 
-    public function __construct(string $workDir)
+    public function __construct(string $workDir, array $config = [])
     {
-        \Qin::$app = $this;
-
         // init properties
         $this->workDir = $workDir;
         $this->ctxPool = new ObjectPool();
         $this->ctxPool->setCreator(function () {
             return new Context();
         });
+
+        $this->init();
+
+        $this->initContainer($config);
+    }
+
+    protected function init()
+    {
+        // do something ...
     }
 
     /**

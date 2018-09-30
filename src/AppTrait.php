@@ -35,13 +35,13 @@ trait AppTrait
      * @throws \InvalidArgumentException
      * @return Container
      */
-    protected function initDI(array $config): Container
+    protected function initContainer(array $config): Container
     {
-        \Mco::$app = $this;
-        \Mco::$di = $di = new Container;
+        \Qin::$app = $this;
+        \Qin::$di = $di = new Container;
 
         \define('APP_DEBUG', (bool)$config['debug']);
-        \Mco::setAlias('@mco', \dirname(__DIR__, 2));
+        \Qin::setAlias('@qin', \dirname(__DIR__));
 
         // Register the global configuration as config
         $di['config'] = new Configuration($config);
