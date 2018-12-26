@@ -8,7 +8,7 @@
 
 namespace Qin\Http;
 
-use Inhere\Route\ORouter;
+use Inhere\Route\Router;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -81,7 +81,7 @@ class App implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        /** @var ORouter $router */
+        /** @var Router $router */
         $router = \Qin::get('httpRouter');
         $uriPath = $request->getUri()->getPath();
         $result = $router->match($uriPath, $request->getMethod());
@@ -91,14 +91,14 @@ class App implements RequestHandlerInterface
         $ctx->init($request, Psr7Http::createResponse());
 
         switch ($result[0]) {
-            case ORouter::FOUND:
+            case Router::FOUND:
                 $route = $result[2];
                 $handler = $route['handler'];
                 $ctx->params = $route['matches'];
                 break;
-            case ORouter::NOT_FOUND:
+            case Router::NOT_FOUND:
                 break;
-            case ORouter::METHOD_NOT_ALLOWED:
+            case Router::METHOD_NOT_ALLOWED:
 
                 break;
         }

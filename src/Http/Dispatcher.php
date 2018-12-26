@@ -58,7 +58,7 @@ class Dispatcher implements RequestHandlerInterface
      * @param ServerRequestInterface $request
      * @return ResponseInterface
      */
-    public function handleRequest(ServerRequestInterface $request): ResponseInterface
+    protected function handleRequest(ServerRequestInterface $request): ResponseInterface
     {
         return ($this->coreHandler)($request);
     }

@@ -8,7 +8,6 @@
 
 namespace Qin\Http\Middleware;
 
-
 use Psr\Http\Message\ResponseInterface;
 use Qin\Http\Context;
 use Qin\Http\MiddlewareInterface;

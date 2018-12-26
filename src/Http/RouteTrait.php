@@ -8,7 +8,7 @@
 
 namespace Qin\Http;
 
-use Inhere\Route\ORouter;
+use Inhere\Route\Router;
 use Qin\Http\Router\Route;
 
 /**
@@ -18,7 +18,7 @@ use Qin\Http\Router\Route;
 trait RouteTrait
 {
     /**
-     * @var ORouter
+     * @var Router
      */
     private $router;
 
@@ -28,11 +28,11 @@ trait RouteTrait
     private $routes = [];
 
     /**
-     * @return ORouter
+     * @return Router
      */
-    public function getRouter(): ORouter
+    public function getRouter(): Router
     {
-        return new ORouter();
+        return new Router();
     }
 
     public function get(string $path, $handler): Route

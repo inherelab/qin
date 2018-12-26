@@ -47,7 +47,7 @@ class Psr15Middleware implements MiddlewareInterface
     public function process(Context $ctx, \Closure $next): ResponseInterface
     {
         if ($this->middleware instanceof \Psr\Http\Server\MiddlewareInterface) {
-            // $this->middleware->process($request, $handler);
+            $this->middleware->process($ctx->req, Psr15Handler::wrap($next));
         }
 
         // $result = $this->middleware

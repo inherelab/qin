@@ -149,9 +149,9 @@ if (!function_exists('cache')) {
 
 if (!function_exists('request')) {
     /**
-     * @return \Inhere\Http\ServerRequest
+     * @return \PhpComp\Http\Message\ServerRequest
      */
-    function request(): \Inhere\Http\ServerRequest
+    function request(): \PhpComp\Http\Message\ServerRequest
     {
         return Qin::get('request');
     }
@@ -159,9 +159,9 @@ if (!function_exists('request')) {
 
 if (!function_exists('response')) {
     /**
-     * @return \Inhere\Http\Response
+     * @return \PhpComp\Http\Message\Response
      */
-    function response(): \Inhere\Http\Response
+    function response(): \PhpComp\Http\Message\Response
     {
         return Qin::get('response');
     }
@@ -179,7 +179,7 @@ if (!function_exists('view')) {
         /** @see \Toolkit\Web\ViewRenderer::render() */
         $content = Qin::get('renderer')->render(alias($template), $data, $layout ? alias($layout) : $layout);
 
-        $body = new \Inhere\Http\Body();
+        $body = new \PhpComp\Http\Message\Body();
         $body->write($content);
 
         return Qin::get('response')->withBody($body);
