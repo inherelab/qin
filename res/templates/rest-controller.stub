@@ -1,0 +1,89 @@
+<?php
+/**
+ * Created by automatic generator
+ * User: inhere {@link https://github/inhere}
+ * Date: {{date}}
+ * Time: {{time}}
+ */
+
+namespace {{namespace}};
+
+use App\Helper\Respond;
+use Mco\Http\HttpController;
+use Psr\Http\Message\ResponseInterface;
+
+/**
+ * Class {{className}}
+ * @package {{namespace}}
+ * @Controller("{{prefix}}")
+ */
+class {{className}} extends HttpController
+{
+    /**
+     * @Route(path="@", method="GET")
+     * @param Context $ctx
+     * @return ResponseInterface
+     */
+    public function index(Context $ctx): ResponseInterface
+    {
+        return Respond::json();
+    }
+
+    /**
+     * @Route(path="{id}", method="GET")
+     * @param Context $ctx
+     * @return ResponseInterface
+     */
+    public function view(Context $ctx): ResponseInterface
+    {
+        $id = (int)$ctx->getParam('id');
+
+        if ($id < 1) {
+            return Respond::errJson(Respond::PARAM_ERROR);
+        }
+
+        return Respond::json();
+    }
+
+    /**
+     * @Route(path="@", method="POST")
+     * @param Context $ctx
+     * @return ResponseInterface
+     */
+    public function create(Context $ctx): ResponseInterface
+    {
+        return Respond::json($ctx->getPost());
+    }
+
+    /**
+     * @Route(path="{id}", method="PUT")
+     * @param Context $ctx
+     * @return ResponseInterface
+     */
+    public function update(Context $ctx): ResponseInterface
+    {
+        $id = (int)$ctx->getParam('id');
+
+        if ($id < 1) {
+            return Respond::errJson(Respond::PARAM_ERROR);
+        }
+
+        return Respond::json($ctx->getPost());
+    }
+
+    /**
+     * @Route(path="{id}", method="DELETE")
+     * @param Context $ctx
+     * @return ResponseInterface
+     */
+    public function delete(Context $ctx): ResponseInterface
+    {
+        $id = (int)$ctx->getParam('id');
+
+        if ($id < 1) {
+            return Respond::errJson(Respond::PARAM_ERROR);
+        }
+
+        return Respond::json();
+    }
+}

@@ -1,0 +1,76 @@
+<?php
+/**
+ * Created by automatic generator
+ * User: inhere {@link https://github/inhere}
+ * Date: {{date}}
+ * Time: {{time}}
+ * Script:
+ * {{fullCommand}}
+ */
+
+namespace {{namespace}};
+
+use Mco\Base\RecordModel;
+
+/**
+ * Class {{className}}
+ * @package {{namespace}}
+ * {{properties}}
+ */
+class {{className}} extends RecordModel
+{
+    /**
+     * @return string
+     */
+    public static function tableName(): string
+    {
+        return self::PREFIX . '{{name}}';
+    }
+
+    /**
+     * the table columns
+     * @return array
+     */
+    public function columns(): array
+    {
+        return [
+            // column => [type, length, ...]
+            {{columns}}
+        ];
+    }
+
+    /**
+     * define attribute field translate list
+     * @return array
+     */
+    public function translates(): array
+    {
+        return [
+            // 'field' => 'translate',
+            // e.g. 'name'=>'名称',
+            {{translates}}
+        ];
+    }
+
+    /**
+     * the validate rules
+     * @return array
+     */
+    public function rules(): array
+    {
+        return [
+            // ['body', 'string'],
+            // ['id, createTime', 'int'],
+            {{rules}}
+        ];
+    }
+
+    /**
+     * before insert
+     */
+    protected function beforeInsert(): bool
+    {
+        // $this->createAt = time();
+        return true;
+    }
+}

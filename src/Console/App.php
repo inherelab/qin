@@ -4,6 +4,7 @@ namespace Qin\Console;
 
 use Inhere\Console\Application;
 use Mco\Console\Command\RouteCommand;
+use Mco\Console\ConsoleServicesProvider;
 use Mco\Console\Controller\GenController;
 use Mco\Base\AppInterface;
 use Mco\Base\AppTrait;

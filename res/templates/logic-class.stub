@@ -1,0 +1,146 @@
+<?php
+/**
+ * Created by automatic generator
+ * User: inhere {@link https://github/inhere}
+ * Date: {{date}}
+ * Time: {{time}}
+ */
+
+namespace {{namespace}};
+
+use Mco\Base\BaseLogic;
+use App\Helper\CacheKey;
+use App\Helper\CacheTime;
+use App\Helper\Respond;
+use {{fullModelClass}};
+
+/**
+ * Class {{className}}
+ * @package {{namespace}}
+ */
+class {{className}} extends BaseLogic
+{
+    /**
+     * @var string
+     */
+    protected static $modelClass = {{modelClass}}::class;
+
+    /**
+     * find a record by ID
+     * @param int $id
+     * @param string $fields
+     * @return null|array [code, data]
+     * @throws \InvalidArgumentException
+     */
+    public function findById(int $id, string $fields = '*')
+    {
+        $cacheKey = \sprintf(CacheKey::{{upperName}}_ITEM, $id);
+
+        if (!$data = \cache()->get($cacheKey)) {
+            // if not found
+            if (!$model = {{modelClass}}::findByPk($id)) {
+                return null;
+            }
+
+            $data = $model->all();
+
+            // set cache
+            \cache()->set($cacheKey, $data, CacheTime::ONE_WEEK);
+        }
+
+        // filter fields
+        $this->filterFields($fields, $data);
+
+        return $data;
+    }
+
+    /**
+     * create a record
+     * @param array $data The submit data
+     * @return array [code, message, data]
+     * @throws \RuntimeException
+     * @throws \InvalidArgumentException
+     */
+    public function create(array $data): array
+    {
+        $model = {{modelClass}}::load($data);
+        $model->insert();
+
+        if ($model->hasError()) {
+            return [Respond::INSERT_FAIL, $model->firstError(), null];
+        }
+
+        return [Respond::OK, null, $model];
+    }
+
+    /**
+     * update a record by ID
+     * @param int $id
+     * @param array $data The submit data
+     * @return array [code, data]
+     * @throws \RuntimeException
+     * @throws \InvalidArgumentException
+     */
+    public function updateById(int $id, array $data): array
+    {
+        if (!$old = $this->findById($id)) {
+            return [Respond::NOT_FOUND, null];
+        }
+
+        $model = {{modelClass}}::load($data);
+        $model->update();
+
+        if ($model->hasError()) {
+            return [Respond::UPDATE_FAIL, $model->firstError(), null];
+        }
+
+        $this->clearCache($old);
+        return [Respond::OK, $model];
+    }
+
+    /**
+     * check exists a record by ID
+     * @param int $id
+     * @return array [code, affected]
+     * @throws \PDOException
+     * @throws \InvalidArgumentException
+     */
+    public function deleteById(int $id): array
+    {
+        if (!$old = $this->findById($id)) {
+            return [Respond::NOT_FOUND, 0];
+        }
+
+        if (1 === {{modelClass}}::deleteByPk($id)) {
+            $this->clearCache($old);
+
+            return [Respond::OK, 1];
+        }
+
+        return [Respond::DELETE_FAIL, 0];
+    }
+
+    /**
+     * check exists a record by ID
+     * @param int $id
+     * @param string $field
+     * @return bool
+     * @throws \InvalidArgumentException
+     */
+    public function exists(int $id, string $field = 'id'): bool
+    {
+        return (bool)$this->findById($id, $field);
+    }
+
+    /**
+     * clear item cache by ID
+     * @param array $model
+     */
+    public function clearCache(array $model)
+    {
+        $cKey0 = \sprintf({{upperName}}::CATEGORY_ITEM, $model['id']);
+
+        // del cache
+        \cache()->delete($cKey0);
+    }
+}

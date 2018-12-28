@@ -1,0 +1,49 @@
+<?php
+/**
+ * Created by automatic generator
+ * User: inhere {@link https://github/inhere}
+ * Date: {{date}}
+ * Time: {{time}}
+ * Gen by command:
+ *
+ * ```shell
+ * {{fullCommand}}
+ * ```
+ */
+
+namespace {{namespace}};
+
+use Inhere\Console\Command;
+use Inhere\Console\IO\Input;
+use Inhere\Console\IO\Output;
+
+/**
+ * Class {{className}}
+ * @package {{namespace}}
+ */
+class {{className}} extends Command
+{
+{{properties}}
+
+    /**
+     * Description of the group command
+     * @usage {command} [arg0 arg1] [--opt ...]
+     * @arguments
+     *   name    the required arg<red>*</red>
+     *   name1   the optional arg(<cyan>DEFAULT_VALUE</cyan>)
+     * @options
+     *   --long-opt this is a long option
+     *   -s         this is a short option
+     *
+     * @param Input $input
+     * @param Output $output
+     * @return int
+     */
+    public function execute($input, $output)
+    {
+        // do something ...
+        $this->write('hello, this is: ' . __METHOD__);
+
+        return 0;
+    }
+}

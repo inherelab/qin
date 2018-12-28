@@ -25,7 +25,8 @@ class Server
     public static function runHTTPServe(RequestHandlerInterface $handler, $listenOn = ':9501')
     {
         $http = new HttpServer();
-        $http->run($handler);
+        $http->setHandler($handler);
+        $http->start();
     }
 
 

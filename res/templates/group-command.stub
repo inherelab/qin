@@ -1,0 +1,55 @@
+<?php
+/**
+ * Created by automatic generator
+ * User: inhere {@link https://github/inhere}
+ * Date: {{date}}
+ * Time: {{time}}
+ * Gen by command:
+ *
+ * ```shell
+ * {{fullCommand}}
+ * ```
+ */
+
+namespace {{namespace}};
+
+use Inhere\Console\Controller;
+use Inhere\Console\IO\Input;
+use Inhere\Console\IO\Output;
+
+/**
+ * Class {{className}}
+ * @package {{namespace}}
+ */
+class {{className}} extends Controller
+{
+    // group name
+    protected static $name = '{{name}}';
+
+    // group description
+    protected static $description ='group description for the group command {{name}}';
+
+    /**
+     * Description of the group command {{name}}
+     * @usage {fullCommand} [arg0 arg1 ...] [--opt -v ...]
+     * @arguments
+     *   name    the required arg<red>*</red>
+     *   name1   the optional arg(<cyan>DEFAULT_VALUE</cyan>)
+     * @options
+     *   --long-opt this is a long option
+     *   -s         this is a short option
+     * @example
+     *   {fullCommand}
+     *
+     * @param Input $input
+     * @param Output $output
+     * @return int
+     */
+    public function someCommand($input, $output)
+    {
+        // do something ...
+        $this->write('hello, this is: ' . __METHOD__);
+
+        return 0;
+    }
+}

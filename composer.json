@@ -1,0 +1,42 @@
+{
+  "name": "mcophp/mco",
+  "type": "framework",
+  "description": "the micro framework of the php 7",
+  "keywords": ["library", "framework", "psr-15", "psr-7"],
+  "homepage": "https://github.com/mcophp/mco",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "inhere",
+      "email": "in.798@qq.com",
+      "homepage": "http://www.yzone.net/"
+    }
+  ],
+  "require": {
+    "php": ">7.0.0",
+    "toolkit/errors": "~1.0",
+    "toolkit/web-utils": "~1.0",
+    "inhere/php-validate": "~2.0",
+    "php-comp/http-message": "~1.0",
+    "php-comp/lite-cache": "dev-master",
+    "php-comp/lite-db": "dev-master",
+    "php-comp/lite-activerecord": "dev-master",
+    "inhere/event": "~1.0",
+    "inhere/middleware": "~1.0",
+    "inhere/sroute": "dev-master",
+    "inhere/console": "dev-master",
+    "toolkit/toolkit": "dev-master",
+    "monolog/monolog": "^1.2"
+  },
+  "autoload": {
+    "files": [
+      "src/Helper/functions.php"
+    ],
+    "classmap": [
+      "src/Mco.php"
+    ],
+    "psr-4": {
+      "Mco\\" : "src/"
+    }
+  }
+}

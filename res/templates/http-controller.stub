@@ -1,0 +1,32 @@
+<?php
+/**
+ * Created by automatic generator
+ * User: inhere {@link https://github/inhere}
+ * Date: {{date}}
+ * Time: {{time}}
+ */
+
+namespace {{namespace}};
+
+use Psr\Http\Message\ResponseInterface;
+use Mco\Http\HttpController;
+
+/**
+ * Class {{className}}
+ * @package {{namespace}}
+ * @Controller("{{prefix}}")
+ */
+class {{className}} extends HttpController
+{
+    /**
+     * @Route(path="@", method="GET")
+     * @return ResponseInterface
+     * @throws \InvalidArgumentException
+     */
+    public function index(): string
+    {
+        return $this->render('{{name}}/index', [
+          'name' => 'inhere'
+        ]);
+    }
+}

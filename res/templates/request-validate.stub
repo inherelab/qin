@@ -1,0 +1,25 @@
+<?php
+/**
+ * Created by automatic generator
+ * User: inhere {@link https://github/inhere}
+ * Date: {{date}}
+ * Time: {{time}}
+ */
+
+namespace {{namespace}};
+
+use Inhere\Validate\AbstractValidation;
+
+/**
+ * Class {{className}}
+ * @package {{namespace}}
+ */
+class {{className}} extends AbstractValidation
+{
+    public function rules(): array
+    {
+        return [
+            ['title, content', 'required'],
+        ];
+    }
+}
