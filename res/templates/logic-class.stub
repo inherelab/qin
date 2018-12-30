@@ -8,7 +8,7 @@
 
 namespace {{namespace}};
 
-use Mco\Base\BaseLogic;
+use Qin\Base\BaseLogic;
 use App\Helper\CacheKey;
 use App\Helper\CacheTime;
 use App\Helper\Respond;

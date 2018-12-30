@@ -24,7 +24,7 @@ if (!function_exists('mco')) {
      * @param string $id
      * @return mixed
      */
-    function qin(string $id)
+    function mco(string $id)
     {
         return Qin::get($id);
     }
@@ -55,7 +55,7 @@ if (!function_exists('flash')) {
     /**
      * @param string|null $key
      * @param string|null $message
-     * @return \Qin\Web\Util\Flash
+     * @return \Toolkit\Web\Util\Flash
      */
     function flash(string $key = null, string $message = null)
     {
@@ -171,13 +171,14 @@ if (!function_exists('view')) {
     /**
      * @param string $template
      * @param array $data
-     * @param null $layout
+     * @param string $layout
      * @return \Psr\Http\Message\ResponseInterface
      */
-    function view(string $template, array $data = [], $layout = null): \Psr\Http\Message\ResponseInterface
+    function view(string $template, array $data = [], $layout = ''): \Psr\Http\Message\ResponseInterface
     {
+        $layout = $layout ? alias($layout) : $layout;
         /** @see \Toolkit\Web\ViewRenderer::render() */
-        $content = Qin::get('renderer')->render(alias($template), $data, $layout ? alias($layout) : $layout);
+        $content = Qin::get('renderer')->render(alias($template), $data, $layout);
 
         $body = new \PhpComp\Http\Message\Body();
         $body->write($content);

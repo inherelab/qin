@@ -34,7 +34,7 @@ class Qin
 
     public static function get(string $id)
     {
-        return null;
+        return self::$di->get($id);
     }
 
     /**

@@ -9,7 +9,7 @@
 namespace {{namespace}};
 
 use App\Helper\Respond;
-use Mco\Http\HttpController;
+use Qin\Http\HttpController;
 use Psr\Http\Message\ResponseInterface;
 
 /**

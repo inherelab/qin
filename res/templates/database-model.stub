@@ -10,7 +10,7 @@
 
 namespace {{namespace}};
 
-use Mco\Base\RecordModel;
+use Qin\Base\RecordModel;
 
 /**
  * Class {{className}}

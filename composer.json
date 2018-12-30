@@ -2,7 +2,12 @@
   "name": "mcophp/mco",
   "type": "framework",
   "description": "the micro framework of the php 7",
-  "keywords": ["library", "framework", "psr-15", "psr-7"],
+  "keywords": [
+    "library",
+    "framework",
+    "psr-15",
+    "psr-7"
+  ],
   "homepage": "https://github.com/mcophp/mco",
   "license": "MIT",
   "authors": [
@@ -13,7 +18,8 @@
     }
   ],
   "require": {
-    "php": ">7.0.0",
+    "php": ">7.1.0",
+    "ext-json": "*",
     "toolkit/errors": "~1.0",
     "toolkit/web-utils": "~1.0",
     "inhere/php-validate": "~2.0",
@@ -33,10 +39,10 @@
       "src/Helper/functions.php"
     ],
     "classmap": [
-      "src/Mco.php"
+      "src/Qin.php"
     ],
     "psr-4": {
-      "Mco\\" : "src/"
+      "Qin\\": "src/"
     }
   }
 }
