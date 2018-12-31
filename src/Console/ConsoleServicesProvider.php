@@ -13,8 +13,8 @@ use Inhere\Console\IO\Output;
 use Inhere\Console\IO\OutputInterface;
 use Toolkit\DI\Container;
 use Toolkit\DI\ServiceProviderInterface;
-use Qin\Base\CallableResolver;
-use Qin\Base\CallableResolverInterface;
+use Qin\CallableResolver;
+use Qin\CallableResolverInterface;
 use Toolkit\Error\Handler\ErrorRenderer;
 
 /**

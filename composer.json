@@ -4,6 +4,7 @@
   "description": "the micro framework of the php 7, base on the swoole 4+",
   "keywords": [
     "library",
+    "swoole",
     "framework",
     "psr-15",
     "psr-7"
