@@ -57,7 +57,6 @@ class App implements RequestHandlerInterface
         });
 
         $this->init();
-
         $this->initContainer($config);
     }
 

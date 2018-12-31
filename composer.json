@@ -1,14 +1,14 @@
 {
-  "name": "mcophp/mco",
+  "name": "inhere/qin",
   "type": "framework",
-  "description": "the micro framework of the php 7",
+  "description": "the micro framework of the php 7, base on the swoole 4+",
   "keywords": [
     "library",
     "framework",
     "psr-15",
     "psr-7"
   ],
-  "homepage": "https://github.com/mcophp/mco",
+  "homepage": "https://github.com/inhere/qin",
   "license": "MIT",
   "authors": [
     {

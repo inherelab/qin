@@ -6,8 +6,8 @@ use Inhere\Console\Application;
 use Qin\Console\Command\RouteCommand;
 use Qin\Console\ConsoleServicesProvider;
 use Qin\Console\Controller\GenController;
-use Qin\Base\AppInterface;
-use Qin\Base\AppTrait;
+use Qin\AppInterface;
+use Qin\AppTrait;
 
 /**
  * Class Console App
