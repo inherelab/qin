@@ -41,6 +41,29 @@ if (!function_exists('app')) {
     }
 }
 
+if (!function_exists('env')) {
+    function env(string $name, $default = null)
+    {
+        $value = getenv($name);
+        if ($value === false) {
+            return value($default);
+        }
+
+        switch (strtolower($value)) {
+            case 'true':
+                return true;
+            case 'false':
+                return false;
+            case 'empty':
+                return '';
+            case 'null':
+                return null;
+        }
+
+        return $value;
+    }
+}
+
 if (!function_exists('auth')) {
     /**
      * @return \ToolkitPlus\Auth\AuthManager
