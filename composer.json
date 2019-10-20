@@ -33,7 +33,7 @@
     "inhere/sroute": "dev-master",
     "inhere/console": "dev-master",
     "toolkit/toolkit": "dev-master",
-    "monolog/monolog": "^1.2"
+    "monolog/monolog": "^2.0"
   },
   "autoload": {
     "files": [

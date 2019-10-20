@@ -9,6 +9,7 @@
 namespace Qin\Http;
 
 use Inhere\Route\Router;
+use PhpComp\Http\Message\HttpFactory;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -118,7 +119,7 @@ class App implements RequestHandlerInterface
      */
     public function internal404Handler(ServerRequestInterface $request): ResponseInterface
     {
-        $res = Psr7Http::createResponse();
+        $res = HttpFactory::createResponse();
 
         return $res->withStatus(404);
     }
@@ -129,7 +130,7 @@ class App implements RequestHandlerInterface
      */
     public function internal405Handler(ServerRequestInterface $request): ResponseInterface
     {
-        $res = Psr7Http::createResponse();
+        $res = HttpFactory::createResponse();
 
         if ($request->getMethod() === 'OPTIONS') {
             return $res->withStatus(200);
