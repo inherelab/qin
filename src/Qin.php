@@ -7,6 +7,7 @@
  */
 
 use Psr\Http\Server\RequestHandlerInterface;
+use Qin\Application;
 use Toolkit\Traits\LogShortTrait;
 use Toolkit\Traits\PathAliasTrait;
 
@@ -17,13 +18,16 @@ class Qin
 {
     use PathAliasTrait, LogShortTrait;
 
+    public const MODE_WEB = 1;
+    public const MODE_CLI = 2;
+
     /**
      * @var \Toolkit\DI\Container
      */
     public static $di;
 
     /**
-     * @var \Qin\Http\App
+     * @var Application
      */
     public static $app;
 
@@ -31,6 +35,14 @@ class Qin
      * @var \Swoole\Server
      */
     public static $srv;
+
+    /**
+     * @return Application
+     */
+    public static function app(): Application
+    {
+        return self::$app;
+    }
 
     public static function get(string $id)
     {

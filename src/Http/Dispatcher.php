@@ -10,6 +10,7 @@ namespace Qin\Http;
 
 use Inhere\Middleware\CallableResolverInterface;
 use Inhere\Middleware\MiddlewareStackAwareTrait;
+use PhpComp\Http\Message\HttpFactory;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
@@ -76,4 +77,32 @@ class Dispatcher implements RequestHandlerInterface
     {
         return $this->callStack($request);
     }
+
+    /**
+     * @param ServerRequestInterface $request
+     * @return ResponseInterface
+     */
+    public function internal404Handler(ServerRequestInterface $request): ResponseInterface
+    {
+        $res = HttpFactory::createResponse();
+
+        return $res->withStatus(404);
+    }
+
+    /**
+     * @param ServerRequestInterface $request
+     * @return ResponseInterface
+     */
+    public function internal405Handler(ServerRequestInterface $request): ResponseInterface
+    {
+        $res = HttpFactory::createResponse();
+
+        if ($request->getMethod() === 'OPTIONS') {
+            return $res->withStatus(200);
+        }
+
+        $methods = (array)$request->getAttribute(self::CTXAllowedMethodsKey);
+        return $res->withStatus(405)->withHeader('Allow', \implode(',', $methods));
+    }
+
 }

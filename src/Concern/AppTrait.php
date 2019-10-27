@@ -5,8 +5,9 @@
  * Date: 2017-09-19
  * Time: 15:06
  */
-namespace Qin;
+namespace Qin\Concern;
 
+use Qin\CommonServiceProvider;
 use Toolkit\ArrUtil\Arr;
 use Toolkit\Collection\Configuration;
 use Toolkit\DI\Container;
